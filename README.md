@@ -33,4 +33,4 @@ The associated report is detailed on the [Report.md](Report.md) file.
 
 ## Evaluation
 
-Sample evaluation of the agent can be checked on [this video](extra/cc_test01.mp4) file.
+Sample evaluation of the agent can be checked on [this video](extra/cc01.mp4) file.
