@@ -6,6 +6,7 @@ My solution for the [Deep Reinforcement Learning Nanodegree](https://www.udacity
 
 [image1]: ./extra/cc01_train.png
 [image2]: ./extra/cc01.gif
+[image3]: ./extra/cc02_train.png
 
 ---
 ## Description
@@ -44,11 +45,7 @@ It was detected unstability during training. The following parameter changes wer
  * `SIGMA`: from  `0.1`, `0.2`, `0.85`, `0.05` to `0.15`.
  * `WEIGHT_DECAY`: from  `1e-4`, `0.` to `1e-6`.
 
-Modifying the batch size in combination with the exploring noise from the `Ornstein-Uhlenbeck` process got better results; the default calculus was changed as follows:
-
-```python
-dx = self.theta * (self.mu - x) + self.sigma * np.random.standard_normal(self.size)
-```
+Modifying the batch size in combination with the exploring noise from the `Ornstein-Uhlenbeck` process got better results.
 
 ## Training
 
@@ -68,16 +65,34 @@ Environment solved in 308 episodes!	Average Score: 30.09
 
 A plot of rewards per episode is illustrated here:
 
-![Training result][image1]
+![Training resultfor 1 agent][image1]
+
+### Several Agents
+
+In this case multiple (non-interacting, parallel) copies of the same agent are instanciated to distribute the task of gathering experience. The code was adapted to work from one agent to an arbitrary list.
+
+The result (local execution) is as follows:
+
+```python
+Episode 100	Average Score: 27.08	Score: 31.05
+Episode 111	Average Score: 30.02	Score: 31.00
+Environment solved in 111 episodes!	Average Score: 30.02
+```
+
+A plot of rewards per episode is illustrated here:
+
+![Training result for 20 agents][image3]
+
 
 ### Evaluation
 
-The evaluation of the agent for a couple of episodes can be checked on [this video](extra/cc01.mp4):
+The evaluation of the agent for a couple of episodes.
 
-![Training evaluation][image2]
+ * [1 Agent](extra/cc01.mp4):
+
+![Training evaluation for 1 agent][image2]
 
 `DDPG` can achieve great performance sometimes, it is frequently brittle with respect to hyperparameters and other kinds of tuning.
-
 
 ## Discussion and Further Work
 
@@ -94,3 +109,7 @@ A basic agent was implemented to solve the task using the `DDPG` algorithm. More
 * [Benchmarking Deep Reinforcement Learning for Continuous Control](https://arxiv.org/abs/1604.06778)
 * [Deep Deterministic Policy Gradient](https://spinningup.openai.com/en/latest/algorithms/ddpg.html)
 * [Proximal Policy Optimization Algorithms](https://arxiv.org/abs/1707.06347)
+* [TD3: Twin Delayed DDPG](https://arxiv.org/abs/1802.09477)
+* [High-Dimensional Continuous Control Using Generalized Advantage Estimation](https://arxiv.org/abs/1506.02438)
+* [Continuous Deep Q-Learning with Model-based Acceleration](https://arxiv.org/abs/1603.00748)
+* [Q-Prop: Sample-Efficient Policy Gradient with An Off-Policy Critic](https://arxiv.org/abs/1611.02247)
