@@ -20,7 +20,7 @@ The observation space consists of `33` variables corresponding to position, rota
 
 The initial configuration uses the [ddpg-bipedal](https://github.com/udacity/deep-reinforcement-learning/tree/master/ddpg-bipedal) project architecture. Internally the `ddpg` (Deep Deterministic Policy Gradient) agent with `experience replay` was implemented.
 
-I used a vanilla deep neural network consisting of 3 fully connected layers for the `actor` and `critic`. The `actor` approximates the best action in the given state while the `critic` approximates the associated `Q-value `.
+I used a vanilla deep neural network consisting of 3 fully connected layers for the `actor` and `critic`. The `actor` approximates the best action in the given state while the `critic` approximates the associated `Q-value `. The default 400x300 two hidden layers units were changed to 256x128 hidden units based on [this discussion](https://knowledge.udacity.com/questions/66792).
 
 ### Hyperparameters
 
@@ -41,9 +41,14 @@ It was detected unstability during training. The following parameter changes wer
  * `BATCH_SIZE`: `32`, `64`, `128`, `256` using a default of `64`.
  * `LR_ACTOR`: from `1e-3` to `1e-4`.
  * `LR_CRITIC`: `1e-3`, `3e-4` to `1e-4`.
- * `SIGMA`: from  `0.2`, `0.85`, `0.05` to `0.1`.
+ * `SIGMA`: from  `0.1`, `0.2`, `0.85`, `0.05` to `0.15`.
+ * `WEIGHT_DECAY`: from  `1e-4`, `0.` to `1e-6`.
 
-Modifying the batch size in combination with the exploring noise from the `Ornstein-Uhlenbeck` process got better results.
+Modifying the batch size in combination with the exploring noise from the `Ornstein-Uhlenbeck` process got better results; the default calculus was changed as follows:
+
+```python
+dx = self.theta * (self.mu - x) + self.sigma * np.random.standard_normal(self.size)
+```
 
 ## Training
 
@@ -51,18 +56,14 @@ Modifying the batch size in combination with the exploring noise from the `Ornst
 
 All training was done on the [Continuous_Control.ipynb](Continuous_Control.ipynb) notebook, taking as reference the [DDPG algorithm](https://arxiv.org/abs/1509.02971) from the [ddpg-bipedal](https://github.com/udacity/deep-reinforcement-learning/tree/master/ddpg-bipedal) code section.
 
-The result (local execution) is as follows using 900 episodes:
+The result (local execution) is as follows:
 
 ```python
-Episode 100	Average Score: 2.92	Score: 4.39
-Episode 200	Average Score: 10.54	Score: 18.28
-Episode 300	Average Score: 18.46	Score: 25.58
-Episode 400	Average Score: 23.68	Score: 23.67
-Episode 500	Average Score: 23.49	Score: 25.86
-Episode 600	Average Score: 22.91	Score: 25.41
-Episode 700	Average Score: 26.08	Score: 26.39
-Episode 800	Average Score: 25.57	Score: 25.32
-Episode 900	Average Score: 26.02	Score: 27.68
+Episode 100	Average Score: 4.26	Score: 14.83
+Episode 200	Average Score: 22.28	Score: 28.04
+Episode 300	Average Score: 29.70	Score: 29.48
+Episode 308	Average Score: 30.09	Score: 31.60
+Environment solved in 308 episodes!	Average Score: 30.09
 ```
 
 A plot of rewards per episode is illustrated here:
@@ -75,6 +76,9 @@ The evaluation of the agent for a couple of episodes can be checked on [this vid
 
 ![Training evaluation][image2]
 
+`DDPG` can achieve great performance sometimes, it is frequently brittle with respect to hyperparameters and other kinds of tuning.
+
+
 ## Discussion and Further Work
 
 A basic agent was implemented to solve the task using the `DDPG` algorithm. More experimentation is needed on the hyperparameters to get better results, or to change the architecture to a multiple (non-interacting, parallel) copies of the same agent so as to distribute the task of gathering experiences. Besides, could be useful to explore other algorithms such as `PPO`, `A2C`/`A3C`.
@@ -86,5 +90,7 @@ A basic agent was implemented to solve the task using the `DDPG` algorithm. More
 * [Proximal Policy Optimization Algorithms](https://arxiv.org/abs/1707.06347)
 * [Asynchronous Methods for Deep Reinforcement Learning](https://arxiv.org/abs/1602.01783)
 * [Continuous control with deep reinforcement learning](https://arxiv.org/abs/1509.02971)
-* [D4PG](https://openreview.net/pdf?id=SyZipzbCb)
+* [Distributed Distributional Deep Deterministic Policy Gradient](https://openreview.net/pdf?id=SyZipzbCb)
 * [Benchmarking Deep Reinforcement Learning for Continuous Control](https://arxiv.org/abs/1604.06778)
+* [Deep Deterministic Policy Gradient](https://spinningup.openai.com/en/latest/algorithms/ddpg.html)
+* [Proximal Policy Optimization Algorithms](https://arxiv.org/abs/1707.06347)
