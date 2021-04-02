@@ -7,6 +7,7 @@ My solution for the [Deep Reinforcement Learning Nanodegree](https://www.udacity
 [image1]: ./extra/cc01_train.png
 [image2]: ./extra/cc01.gif
 [image3]: ./extra/cc02_train.png
+[image4]: ./extra/cc02.gif
 
 ---
 ## Description
@@ -88,9 +89,17 @@ A plot of rewards per episode is illustrated here:
 
 The evaluation of the agent for a couple of episodes.
 
+#### 1 Agent
+
  * [1 Agent](extra/cc01.mp4):
 
 ![Training evaluation for 1 agent][image2]
+
+#### 20 Agents
+
+ * [20 Agents](extra/cc02.mp4):
+
+![Training evaluation for 20 agents][image4]
 
 `DDPG` can achieve great performance sometimes, it is frequently brittle with respect to hyperparameters and other kinds of tuning.
 
