@@ -32,7 +32,7 @@ Setup the environment as detailed [here](https://github.com/udacity/deep-reinfor
 Then, make sure to execute (at least once) the first code cell from [Continuous_Control.ipynb](Continuous_Control.ipynb) to finish installing the requirements.
 
 ```python
-pip -q install ./python```
+pip -q install ./python
 ```
 
 ## Training
@@ -48,9 +48,11 @@ The associated report is detailed on the [Report.md](Report.md) file.
 ### 1 Agent
 
 ![Training evaluation for 1 agent][image1]
+
 [video](extra/cc01.mp4)
 
 ### 20 Agents
 
 ![Training evaluation for 20 agents][image2]
+
 [video](extra/cc02.mp4)
