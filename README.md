@@ -4,6 +4,12 @@
 
 Train an agent with DRL to control a double-jointed arm to move to a target location.
 
+[//]: # (Image References)
+
+[image1]: ./extra/cc01.gif
+[image2]: ./extra/cc02.gif
+
+---
 ## Project Setup
 
 ### Introduction
@@ -23,6 +29,12 @@ Setup the environment as detailed [here](https://github.com/udacity/deep-reinfor
  * [Unity ML-Agents](https://github.com/Unity-Technologies/ml-agents/blob/master/docs/Installation.md)
  * [NumPy](http://www.numpy.org/)
 
+Then, make sure to execute (at least once) the first code cell from [Continuous_Control.ipynb](Continuous_Control.ipynb) to finish installing the requirements.
+
+```python
+pip -q install ./python```
+```
+
 ## Training
 
 Follow the instructions in [Continuous_Control.ipynb](Continuous_Control.ipynb) file to train the agent.
@@ -33,4 +45,12 @@ The associated report is detailed on the [Report.md](Report.md) file.
 
 ## Evaluation
 
-Sample evaluation of the agent can be checked on [this video](extra/cc01.mp4) file.
+### 1 Agent
+
+![Training evaluation for 1 agent][image1]
+[video](extra/cc01.mp4)
+
+### 20 Agents
+
+![Training evaluation for 20 agents][image2]
+[video](extra/cc02.mp4)
