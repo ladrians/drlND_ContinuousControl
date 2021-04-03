@@ -26,6 +26,8 @@ Setup the environment as detailed [here](https://github.com/udacity/deep-reinfor
 
 ### Requirements
 
+Check the associated [dependencies](https://github.com/udacity/deep-reinforcement-learning#dependencies):
+
  * [Unity ML-Agents](https://github.com/Unity-Technologies/ml-agents/blob/master/docs/Installation.md)
  * [NumPy](http://www.numpy.org/)
 
